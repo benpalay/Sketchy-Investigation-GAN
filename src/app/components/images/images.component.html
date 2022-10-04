@@ -1,0 +1,8 @@
+<div class="container">
+<p>images works!</p>
+<h2>{{imageIndex}}</h2>
+<!-- <button *ngIf= "timerDone" class="btn btn-primary" (click)="onDisplay()"> Display New Image </button> -->
+</div>
+<div *ngIf="(!timerDone || displayNewImage)" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="400%" width="400%">
+</div>
+
