@@ -1,5 +1,5 @@
 export class features{
-     id: String;
+     id;
      age: String;
      gender: String;
      emotion: String;

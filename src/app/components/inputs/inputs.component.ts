@@ -9,9 +9,9 @@ import { FilterService } from '../services/filter.service';
 })
 export class InputsComponent implements OnInit {
 
-  age: String;
-  ethnicity: String;
-  gender:String;
+  age: String = '';
+  ethnicity: String = '';
+  gender:String = '';
   features: features;
 
   constructor(private filterService: FilterService) { }
