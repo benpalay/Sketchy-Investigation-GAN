@@ -23,4 +23,3 @@ import { FilterService } from './components/services/filter.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-//npm install --save bootstrap@3
