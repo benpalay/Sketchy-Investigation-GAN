@@ -7,6 +7,9 @@ import { features } from "src/app/models/features.model";
 export class FilterService{
 
 public features: Subject<features> = new Subject();
+public initialFeatures: Subject<features> = new Subject();
+
+public imagesRead: Subject<any>= new Subject();
 
 constructor(){}
 

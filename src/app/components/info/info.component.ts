@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FilterService } from '../services/filter.service';
 
 @Component({
   selector: 'app-info',
@@ -10,12 +11,13 @@ export class InfoComponent implements OnInit {
   @Output() 
   ready: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
-  constructor() { }
+
+  constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
   }
 
-  onReady(){
+ async onReady(){
      this.ready.emit(true)
   }
 }

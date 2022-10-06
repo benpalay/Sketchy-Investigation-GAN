@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { ImagesComponent } from './components/images/images.component';
@@ -23,7 +23,7 @@ import { CountdownImageComponent } from './components/countdown-image/countdown-
     FormsModule 
     //MatMenu
   ],
-  providers: [FilterService],
+  providers: [FilterService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { features } from 'src/app/models/features.model';
 import { HttpClient } from "@angular/common/http";
 import { FilterService } from '../services/filter.service';
@@ -15,16 +15,29 @@ export class ImagesComponent implements OnInit {
   public timerDone: Boolean = false;
   public displayNewImage: Boolean = false;
   public features: any[] = [];  
+  public initialFilterFeatures: any[] = []
   public filterFeatures: any[] = [];
   public chosenFeatures: features;
   public gender:String
+  public ethnicity:String
 
+  
+  @Input()
+  selectedFeatures: features
 
   constructor( private http: HttpClient, private filterService: FilterService) { }
   
   ngOnInit(): void {
-    this.chooseRandomIndex()
+  
+   
     this.readCsvData()
+    
+    this.filterService.initialFeatures.subscribe(
+    data => {
+      this.ethnicity = data.ethnicity
+      this.findInitialImage()
+    })
+
     this.filterService.features.subscribe(data => {
       //this.chosenFeatures.age = data.age
       //this.chosenFeatures.ethnicity = data.ethnicity
@@ -34,21 +47,30 @@ export class ImagesComponent implements OnInit {
     })
   }
   
+  private findInitialImage(){
+this.initialFilterFeatures = this.features.filter(feature => 
+          feature.ethnicity === this.ethnicity)
+        if(this.initialFilterFeatures){
+          let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
+          let id = parseInt(this.initialFilterFeatures[index].id) 
+          this.imageIndex = id +1 
+
+          this.onDisplay()
+        }
+
+  }
   private findNewImage(){
-        this.filterFeatures = this.features.filter(feature => 
+        this.filterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.gender === this.gender)
         if(this.filterFeatures){
           let index = Math.round(Math.random()*(this.filterFeatures.length-1))
-        this.imageIndex = this.filterFeatures[index].id
-        this.onDisplay()
+          let id = parseInt(this.filterFeatures[index].id) 
+          this.imageIndex = id +1 
+
+          this.onDisplay()
         }
   }
-  private chooseRandomIndex(){
-     this.imageIndex = Math.round(Math.random()*12); //change to 10000 depending on folder size
-     setTimeout(()=>{
-      this.timerDone = true}, 5000) //display for 5 seconds 
-     }
-
+  
   private readCsvData() {
       this.http.get('assets/features.csv', {responseType: 'text'})
     .subscribe(
@@ -56,7 +78,6 @@ export class ImagesComponent implements OnInit {
           let csvRecordsArray = (<string>data).split(/\r\n|\n/);  
           let headersRow = this.getHeaderArray(csvRecordsArray);  
           this.features = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, headersRow.length);  
-          console.log('Features' , this.features)
         },
         error => {
             console.log(error);
@@ -79,7 +100,7 @@ export class ImagesComponent implements OnInit {
     let csvArr = [];  
   
     //for (let i = 1; i < csvRecordsArray.length; i++) {  
-      for (let i = 1; i < 13; i++) {
+      for (let i = 1; i < 11; i++) {
         let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
         let csvRecord: features = new features();  
         csvRecord.id = curruntRecord[0].trim();
