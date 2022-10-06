@@ -6,12 +6,16 @@ import { ImagesComponent } from './components/images/images.component';
 import { InputsComponent } from './components/inputs/inputs.component';
 import { FormsModule } from '@angular/forms';
 import { FilterService } from './components/services/filter.service';
+import { InfoComponent } from './components/info/info.component';
+import { CountdownImageComponent } from './components/countdown-image/countdown-image.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImagesComponent,
-    InputsComponent
+    InputsComponent,
+    InfoComponent,
+    CountdownImageComponent
   ],
   imports: [
     BrowserModule,

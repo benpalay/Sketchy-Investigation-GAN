@@ -1,4 +1,12 @@
-<div class="container">
+<div class="info" *ngIf="!isReady">
+  <app-info (ready)="onReady($event)"></app-info>
+</div>
+
+<div class="countdown-image" *ngIf="(isReady && !timerDone)" >
+  <app-countdown-image (timerDone)="onTimer($event)"></app-countdown-image>
+</div>
+
+<div class="container" *ngIf="timerDone">
   <div class="col-xs-6">
     <app-inputs></app-inputs>
   </div>
