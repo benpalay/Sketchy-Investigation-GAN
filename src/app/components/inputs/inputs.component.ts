@@ -13,10 +13,36 @@ export class InputsComponent implements OnInit {
   ethnicity: String = '';
   gender:String = '';
   features: features;
+  initialSubmitted:Boolean  =false;
 
   constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
+  }  
+
+  public onSubmit(){
+     this.initialSubmitted = !this.initialSubmitted
+    //this.features.age = this.age
+    //this.features.ethnicity = this.ethnicity
+    //this.features.gender = this.gender
+    this.filterService.initialFeatures.next({'id': '0',
+     'age':'0',
+     'gender':'0',
+     'emotion':'0',
+     'ethnicity':this.ethnicity,
+     'skinColour':'0',
+     'eyeColour':'0',
+     'hairColour':'0',
+     'noseWidth':'0',
+     'noseHeight':'0',
+     'eyeWidth':'0',
+     'eyeArea':'0',
+     'eyeSpacing':'0',
+     'mouthWidth':'0',
+     'lipThickness':'0',
+     'faceArea':'0'})
+
+     
   }
 
   public Update(){
@@ -49,10 +75,10 @@ export class InputsComponent implements OnInit {
 
 // }
 
-//   onChangeEthnicity(e) {
-//    this.ethnicity= e.target.value;
-//    console.log(this.ethnicity)
-// }
+ onChangeEthnicity(e:any) {
+    this.ethnicity= e.target.value;
+   console.log(this.ethnicity)
+}
 
   onChangeGender(e:any) {
    this.gender= e.target.value;
