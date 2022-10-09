@@ -14,6 +14,7 @@ export class ImagesComponent implements OnInit {
   public imageIndex: number = 0;
   public timerDone: Boolean = false;
   public displayNewImage: Boolean = false;
+  public noneFound: Boolean = false;
   public features: any[] = [];  
   public initialFilterFeatures: any[] = []
   public initFilterFeatures: any[] = []
@@ -56,10 +57,23 @@ export class ImagesComponent implements OnInit {
   }
   
   private findInitialImage(){
-              console.log('features', this.features)
 
+    if(this.ethnicity==="" && this.gender === ""){
+      this.initialFilterFeatures = this.features
+    }
+    else if(this.ethnicity==="") {
+      this.initialFilterFeatures = this.features.filter(feature => 
+          feature.gender === this.gender)
+    }
+    else if( this.gender ===""){
+      this.initialFilterFeatures = this.features.filter(feature => 
+          feature.ethnicity === this.ethnicity)
+    }
+    else{
 this.initialFilterFeatures = this.features.filter(feature => 
-          feature.ethnicity === this.ethnicity && feature.gender === this.gender)
+          feature.ethnicity === this.ethnicity && feature.gender === this.gender)}
+
+
         if(this.initialFilterFeatures.length !== 0){
           console.log('initial', this.initialFilterFeatures)
           let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
@@ -69,11 +83,12 @@ this.initialFilterFeatures = this.features.filter(feature =>
           this.onDisplay()
         }
         else{
-          console.log('no matching images')
-        }
+
+this.noneFound = true;        }
 
   }
   private findNewImage(){
+    this.noneFound = false;
     this.initFilterFeatures = this.initialFilterFeatures
         this.imageShown = this.initFilterFeatures.filter(feature => parseInt(feature.id) === this.imageIndex-1)
         this.originalNoseWidth = this.imageShown[0].noseWidth
@@ -97,8 +112,7 @@ this.initialFilterFeatures = this.features.filter(feature =>
           this.onDisplay()
         }
          else{
-          console.log('no matching images')
-        }
+this.noneFound = true;        }
   }
   
   private readCsvData() {
