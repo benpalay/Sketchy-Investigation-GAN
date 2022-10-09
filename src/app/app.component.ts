@@ -10,12 +10,13 @@ import { features } from './models/features.model';
 })
 export class AppComponent implements OnInit {
   
-  constructor(private title:Title){
+  title = 'Sketchy';
+  constructor(private Title:Title){
 
   }
 
   ngOnInit(){
-     this.title.setTitle("Sketchy")
+     this.Title.setTitle("Sketchy")
   }
 
   isReady: Boolean = false;

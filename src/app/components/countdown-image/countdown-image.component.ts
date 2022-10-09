@@ -19,8 +19,8 @@ export class CountdownImageComponent implements OnInit {
 
 
     private chooseRandomIndex(){
-     this.imageIndex = Math.ceil(Math.random()*10); //change to 10000 depending on folder size
+     this.imageIndex = Math.ceil(Math.random()*200); //change to 10000 depending on folder size
      setTimeout(()=>{
-      this.timerDone.emit(true)}, 10000) //display for 10 seconds 
+      this.timerDone.emit(true)}, 1000) //display for 10 seconds 
      }
 }

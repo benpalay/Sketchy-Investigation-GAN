@@ -14,41 +14,68 @@
               <input type="radio" id="white" name="ethnicity" value="white" (change)="onChangeEthnicity($event)">
               <label for="White">White</label><br>
               <input type="radio" id="asian" name="ethnicity" value="asian" (change)="onChangeEthnicity($event)">
-              <label for="Asian">Asian</label>
-      
+              <label for="Asian">Asian</label><br>
+            <input type="radio" id="other" name="ethnicity" value="" (change)="onChangeEthnicity($event)">
+            <label for="other">Unknown/Other</label>
+            <!-- indian, latina? -->
+
             <br>
+
+            <p>Gender:</p>
+            <input type="radio" id="male" name="gender" value="Man" (change)="onChangeGender($event)">
+            <label for="gender1">Man</label><br>
+            <input type="radio" id="female" name="gender" value="Woman" (change)="onChangeGender($event)">
+            <label for="gender2">Woman</label><br>
+            <input type="radio" id="unknown" name="gender" value="" (change)="onChangeGender($event)">
+            <label for="gender3">Unknown/Other</label><br>
+            
+            <br>
+
+            <p>Hair Colour:</p>
+
+      
       <input type="submit" value="Submit">
 
       </form>
       </div>
 
       <div class="updates" *ngIf="initialSubmitted">
+
 <form (ngSubmit)="Update()">
-      <!-- <p>Ethnicity:</p>
-        <input type="radio" id="Black" name="fav_language" value="Black" (change)="onChangeEthnicity($event)">
-        <label for="Black">Black</label><br>
-        <input type="radio" id="white" name="fav_language" value="white" (change)="onChangeEthnicity($event)">
-        <label for="white">white</label><br>
-        <input type="radio" id="asian" name="fav_language" value="asian" (change)="onChangeEthnicity($event)">
-        <label for="asian">asian</label>
+            <p>Eye Colour:</p>
+            <input type="radio" id="brown" name="EyeColor" value="brown" (change)="onChangeEyeColor($event)">
+              <label for="brown">Brown</label><br>
+            <input type="radio" id="blue" name="EyeColor" value="blue" (change)="onChangeEyeColor($event)">
+              <label for="blue">Blue</label><br>
+            <input type="radio" id="black" name="EyeColor" value="black" (change)="onChangeEyeColor($event)">
+              <label for="black">Black</label><br>
+            <input type="radio" id="green" name="EyeColor" value="green" (change)="onChangeEyeColor($event)">
+              <label for="green">Green</label><br>
+            <input type="radio" id="other" name="EyeColor" value="" (change)="onChangeEyeColor($event)">
+              <label for="other">Unknown/Other</label><br>
 
-      <br> -->
+            <p>Hair Length:</p>
 
-      <!-- <p>Age:</p>
+
+      <p>Nose Width:</p>
+      <input type="radio" id="NoseWidth1" name="NoseWidth" value="smaller" (change)="onChangeNoseWidth($event)">
+      <label for="NoseWidth1">Smaller</label><br>
+      <input type="radio" id="NoseWidth2" name="NoseWidth" value="bigger" (change)="onChangeNoseWidth($event)">
+      <label for="NoseWidth2">Bigger</label><br>
+ 
+      <p>Age:</p>
       <input type="radio" id="age1" name="age" value="18" (change)="onChangeAge($event)">
       <label for="age1">0 - 18</label><br>
       <input type="radio" id="age2" name="age" value="35" (change)="onChangeAge($event)">
       <label for="age2">19 - 35</label><br>
       <input type="radio" id="age3" name="age" value="100" (change)="onChangeAge($event)">
-      <label for="age3">36-100</label><br><br> -->
+      <label for="age3">36-100</label><br>
+      <input type="radio" id="age4" name="age" value="" (change)="onChangeAge($event)">
+      <label for="age4">Unknown</label><br>
+      
+      <br><br> 
 
-      <p>Gender:</p>
-      <input type="radio" id="male" name="gender" value="Man" (change)="onChangeGender($event)">
-      <label for="age1">Man</label><br>
-      <input type="radio" id="female" name="gender" value="Woman" (change)="onChangeGender($event)">
-      <label for="age2">Woman</label><br>
-
-      <input type="submit" value="Update">
+            <input type="submit" value="Update">
 
 
 </form>
