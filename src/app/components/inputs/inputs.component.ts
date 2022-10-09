@@ -12,6 +12,9 @@ export class InputsComponent implements OnInit {
   age: String = '';
   ethnicity: String = '';
   gender:String = '';
+  eyeColour:String = '';
+  noseWidth:String = '';
+
   features: features;
   initialSubmitted:Boolean  =false;
 
@@ -22,12 +25,9 @@ export class InputsComponent implements OnInit {
 
   public onSubmit(){
      this.initialSubmitted = !this.initialSubmitted
-    //this.features.age = this.age
-    //this.features.ethnicity = this.ethnicity
-    //this.features.gender = this.gender
     this.filterService.initialFeatures.next({'id': '0',
      'age':'0',
-     'gender':'0',
+     'gender':this.gender,
      'emotion':'0',
      'ethnicity':this.ethnicity,
      'skinColour':'0',
@@ -46,20 +46,16 @@ export class InputsComponent implements OnInit {
   }
 
   public Update(){
-       console.log(this.gender)
 
-    //this.features.age = this.age
-    //this.features.ethnicity = this.ethnicity
-    //this.features.gender = this.gender
     this.filterService.features.next({'id': '0',
      'age':'0',
-     'gender':this.gender,
+     'gender':'0',
      'emotion':'0',
      'ethnicity':'0',
      'skinColour':'0',
-     'eyeColour':'0',
+     'eyeColour':this.eyeColour,
      'hairColour':'0',
-     'noseWidth':'0',
+     'noseWidth':this.noseWidth,
      'noseHeight':'0',
      'eyeWidth':'0',
      'eyeArea':'0',
@@ -70,17 +66,23 @@ export class InputsComponent implements OnInit {
   }
 
 
-//   onChangeAge(e) {
-//    this.age= e.target.value;
-
-// }
-
  onChangeEthnicity(e:any) {
     this.ethnicity= e.target.value;
-   console.log(this.ethnicity)
 }
 
   onChangeGender(e:any) {
    this.gender= e.target.value;
+}
+
+onChangeEyeColor(e:any) {
+   this.eyeColour= e.target.value;
+}
+
+onChangeAge(e:any) {
+   this.age= e.target.value;
+}
+
+onChangeNoseWidth(e:any) {
+   this.noseWidth= e.target.value;
 }
 }

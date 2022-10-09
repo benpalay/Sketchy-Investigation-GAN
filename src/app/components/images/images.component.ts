@@ -11,15 +11,21 @@ import { FilterService } from '../services/filter.service';
 
 export class ImagesComponent implements OnInit {
 
-  public imageIndex: Number = 0;
+  public imageIndex: number = 0;
   public timerDone: Boolean = false;
   public displayNewImage: Boolean = false;
   public features: any[] = [];  
   public initialFilterFeatures: any[] = []
+  public initFilterFeatures: any[] = []
   public filterFeatures: any[] = [];
   public chosenFeatures: features;
   public gender:String
   public ethnicity:String
+  public eyeColour:String
+  public noseWidth:String
+  public imageShown:any
+  public originalNoseWidth:any
+
 
   
   @Input()
@@ -35,6 +41,7 @@ export class ImagesComponent implements OnInit {
     this.filterService.initialFeatures.subscribe(
     data => {
       this.ethnicity = data.ethnicity
+      this.gender = data.gender
       this.findInitialImage()
     })
 
@@ -42,32 +49,55 @@ export class ImagesComponent implements OnInit {
       //this.chosenFeatures.age = data.age
       //this.chosenFeatures.ethnicity = data.ethnicity
       //this.chosenFeatures.gender = data.gender
-      this.gender = data.gender
+      this.eyeColour = data.eyeColour
+      this.noseWidth = data.noseWidth
       this.findNewImage()
     })
   }
   
   private findInitialImage(){
+              console.log('features', this.features)
+
 this.initialFilterFeatures = this.features.filter(feature => 
-          feature.ethnicity === this.ethnicity)
-        if(this.initialFilterFeatures){
+          feature.ethnicity === this.ethnicity && feature.gender === this.gender)
+        if(this.initialFilterFeatures.length !== 0){
+          console.log('initial', this.initialFilterFeatures)
           let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
           let id = parseInt(this.initialFilterFeatures[index].id) 
           this.imageIndex = id +1 
 
           this.onDisplay()
         }
+        else{
+          console.log('no matching images')
+        }
 
   }
   private findNewImage(){
+    this.initFilterFeatures = this.initialFilterFeatures
+        this.imageShown = this.initFilterFeatures.filter(feature => parseInt(feature.id) === this.imageIndex-1)
+        this.originalNoseWidth = this.imageShown[0].noseWidth
+          
+        if (this.noseWidth==='bigger'){
         this.filterFeatures = this.initialFilterFeatures.filter(feature => 
-          feature.gender === this.gender)
-        if(this.filterFeatures){
+          feature.eyeColour === this.eyeColour && feature.noseWidth>this.originalNoseWidth
+        )}
+        else if (this.noseWidth==='smaller'){
+            this.filterFeatures = this.initialFilterFeatures.filter(feature => 
+          feature.eyeColour === this.eyeColour && feature.noseWidth<this.originalNoseWidth
+          
+        )}
+        
+        if(this.filterFeatures.length !== 0){
           let index = Math.round(Math.random()*(this.filterFeatures.length-1))
-          let id = parseInt(this.filterFeatures[index].id) 
+          let id = parseInt(this.filterFeatures[index].id)
+
           this.imageIndex = id +1 
 
           this.onDisplay()
+        }
+         else{
+          console.log('no matching images')
         }
   }
   
@@ -100,7 +130,7 @@ this.initialFilterFeatures = this.features.filter(feature =>
     let csvArr = [];  
   
     //for (let i = 1; i < csvRecordsArray.length; i++) {  
-      for (let i = 1; i < 11; i++) {
+      for (let i = 1; i < 201; i++) {
         let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
         let csvRecord: features = new features();  
         csvRecord.id = curruntRecord[0].trim();
