@@ -33,39 +33,39 @@ export class InputsComponent implements OnInit {
 
   public onSubmit(){
      this.initialSubmitted = !this.initialSubmitted
-    this.filterService.initialFeatures.next({'id': '0',
-     'age':'0',
+    this.filterService.initialFeatures.next({'id': "",
+     'age':"",
      'gender':this.gender,
-     'emotion':'0',
+     'emotion':"",
      'ethnicity':this.ethnicity,
-     'skinColour':'0',
-     'eyeColour':'0',
-     'hairColour':'0',
-     'noseWidth':'0',
-     'noseHeight':'0',
-     'eyeWidth':'0',
-     'eyeArea':'0',
-     'eyeSpacing':'0',
-     'mouthWidth':'0',
-     'lipThickness':'0',
-     'faceArea':'0'})
+     'skinColour':"",
+     'eyeColour':this.eyeColour,
+     'hairColour':"",
+     'noseWidth':"",
+     'noseHeight':"",
+     'eyeWidth':"",
+     'eyeArea':"",
+     'eyeSpacing':"",
+     'mouthWidth':"",
+     'lipThickness':"",
+     'faceArea':""})
 
      
   }
 
   public Update(){
 
-    this.filterService.features.next({'id': '0',
+    this.filterService.features.next({'id': "",
      'age':this.age,
-     'gender':'0',
+     'gender':"",
      'emotion':this.emotion,
-     'ethnicity':'0',
-     'skinColour':'0',
-     'eyeColour':this.eyeColour,
-     'hairColour':'0',
+     'ethnicity':"",
+     'skinColour':"",
+     'eyeColour':"",
+     'hairColour':"",
      'noseWidth':this.noseWidth,
      'noseHeight':this.noseLength,
-     'eyeWidth':'0',
+     'eyeWidth':"",
      'eyeArea':this.eyeSize,
      'eyeSpacing':this.eyeSpacing,
      'mouthWidth':this.mouthWidth,

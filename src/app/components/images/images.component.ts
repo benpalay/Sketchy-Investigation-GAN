@@ -20,15 +20,32 @@ export class ImagesComponent implements OnInit {
   public initFilterFeatures: any[] = []
   public filterFeatures: any[] = [];
   public chosenFeatures: features;
+
   public gender:String
   public ethnicity:String
   public eyeColour:String
   public noseWidth:String
+  public noseLength:String
+  public faceArea:String
+  public mouthWidth:String
+  public lipThickness:String
+  public emotion:String
+  public age:String
+  public eyeSpacing:String
+  public eyeSize:String
+
   public imageShown:any
   public originalNoseWidth:any
+  public originalEyeSpacing:any
+  public originalEyeSize:any
+  public originalNoseLength:any
+  public originalFaceArea:any
+  public originalMouthWidth:any
+  public originalLipThickness:any
+  public originalEmotion:any
+  public originalAge:any
 
 
-  
   @Input()
   selectedFeatures: features
 
@@ -43,38 +60,45 @@ export class ImagesComponent implements OnInit {
     data => {
       this.ethnicity = data.ethnicity
       this.gender = data.gender
+      this.eyeColour = data.eyeColour
+      //hair stuff
       this.findInitialImage()
     })
 
     this.filterService.features.subscribe(data => {
-      //this.chosenFeatures.age = data.age
-      //this.chosenFeatures.ethnicity = data.ethnicity
-      //this.chosenFeatures.gender = data.gender
-      this.eyeColour = data.eyeColour
       this.noseWidth = data.noseWidth
+      this.noseLength = data.noseHeight
+      this.age = data.age
+      this.eyeSize = data.eyeArea
+      this.eyeSpacing = data.eyeSpacing
+      this.mouthWidth = data.mouthWidth
+      this.emotion = data.emotion
+      this.faceArea = data.faceArea
+      this.lipThickness = data.lipThickness
+
       this.findNewImage()
     })
   }
   
   private findInitialImage(){
 
-    if(this.ethnicity==="" && this.gender === ""){
-      this.initialFilterFeatures = this.features
-    }
-    else if(this.ethnicity==="") {
-      this.initialFilterFeatures = this.features.filter(feature => 
-          feature.gender === this.gender)
-    }
-    else if( this.gender ===""){
-      this.initialFilterFeatures = this.features.filter(feature => 
+    //put eye colour here, as well as hair colour and length/facil hair
+    this.initialFilterFeatures = this.features
+
+    if(this.ethnicity!==""){
+      this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.ethnicity === this.ethnicity)
     }
-    else{
-this.initialFilterFeatures = this.features.filter(feature => 
-          feature.ethnicity === this.ethnicity && feature.gender === this.gender)}
+    if(this.gender!==""){
+      this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
+          feature.gender === this.gender)
+    }
+    if(this.eyeColour!==""){
+      this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
+          feature.eyeColour === this.eyeColour)
+    }
 
-
-        if(this.initialFilterFeatures.length !== 0){
+    if(this.initialFilterFeatures.length !== 0){
           console.log('initial', this.initialFilterFeatures)
           let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
           let id = parseInt(this.initialFilterFeatures[index].id) 
@@ -83,26 +107,103 @@ this.initialFilterFeatures = this.features.filter(feature =>
           this.onDisplay()
         }
         else{
-
-this.noneFound = true;        }
-
+          this.noneFound = true;     
+           }
   }
+
+  
   private findNewImage(){
     this.noneFound = false;
+    this.filterFeatures = this.initialFilterFeatures
+
     this.initFilterFeatures = this.initialFilterFeatures
         this.imageShown = this.initFilterFeatures.filter(feature => parseInt(feature.id) === this.imageIndex-1)
         this.originalNoseWidth = this.imageShown[0].noseWidth
-          
-        if (this.noseWidth==='bigger'){
-        this.filterFeatures = this.initialFilterFeatures.filter(feature => 
-          feature.eyeColour === this.eyeColour && feature.noseWidth>this.originalNoseWidth
-        )}
-        else if (this.noseWidth==='smaller'){
-            this.filterFeatures = this.initialFilterFeatures.filter(feature => 
-          feature.eyeColour === this.eyeColour && feature.noseWidth<this.originalNoseWidth
-          
-        )}
+        this.originalNoseLength = this.imageShown[0].noseHeight
+        this.originalMouthWidth = this.imageShown[0].mouthWidth
+        this.originalLipThickness = this.imageShown[0].lipThickness
+        this.originalFaceArea = this.imageShown[0].faceArea
+        this.originalEyeSpacing = this.imageShown[0].eyeSpacing 
+        this.originalEyeSize = this.imageShown[0].eyeArea 
         
+        // this.filterFeatures = this.initialFilterFeatures
+        if (this.noseWidth==='bigger'){
+        this.filterFeatures = this.filterFeatures.filter(feature => 
+           feature.noseWidth>this.originalNoseWidth
+        )}
+        else if (this.noseWidth ==='smaller'){
+            this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.noseWidth<this.originalNoseWidth 
+        )}
+        if (this.noseLength==='bigger'){
+        this.filterFeatures = this.filterFeatures.filter(feature => 
+           feature.noseLength>this.originalNoseLength
+        )}
+        else if (this.noseLength ==='smaller'){
+            this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.noseLength<this.originalNoseLength 
+        )}
+        if (this.eyeSpacing==='bigger'){
+        this.filterFeatures = this.filterFeatures.filter(feature => 
+           feature.eyeSpacing>this.originalEyeSpacing
+        )}
+        else if (this.eyeSpacing ==='smaller'){
+            this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.eyeSpacing<this.originalEyeSpacing 
+        )}
+        if (this.eyeSize==='bigger'){
+        this.filterFeatures = this.filterFeatures.filter(feature => 
+           feature.eyeArea>this.originalEyeSize
+        )}
+        else if (this.eyeSize ==='smaller'){
+            this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.eyeArea<this.originalEyeSize 
+        )}
+        if (this.mouthWidth==='bigger'){
+        this.filterFeatures = this.filterFeatures.filter(feature => 
+           feature.mouthWidth>this.originalMouthWidth
+        )}
+        else if (this.mouthWidth ==='smaller'){
+            this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.mouthWidth<this.originalMouthWidth 
+        )}
+        if (this.lipThickness==='bigger'){
+        this.filterFeatures = this.filterFeatures.filter(feature => 
+           feature.lipThickness>this.originalLipThickness
+        )}
+        else if (this.lipThickness ==='smaller'){
+            this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.lipThickness<this.originalLipThickness 
+        )}
+        if (this.faceArea==='bigger'){
+        this.filterFeatures = this.filterFeatures.filter(feature => 
+           feature.faceArea>this.originalFaceArea
+        )}
+        else if (this.faceArea ==='smaller'){
+            this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.faceArea<this.originalFaceArea 
+        )}
+        if(this.emotion!==""){
+          this.filterFeatures = this.filterFeatures.filter(feature => 
+          feature.emotion===this.emotion 
+        ) 
+        }
+        if(this.age=="18"){
+          this.filterFeatures = this.filterFeatures.filter(feature => 
+          parseInt(feature.age)<=18
+        ) }
+        if(this.age=="40"){
+          this.filterFeatures = this.filterFeatures.filter(feature => 
+          parseInt(feature.age)<=39 && parseInt(feature.age)>18
+        ) }
+        if(this.age=="100"){
+          this.filterFeatures = this.filterFeatures.filter(feature => 
+          parseInt(feature.age)>=40
+        ) }        
+        
+
+
+        console.log(this.filterFeatures)
         if(this.filterFeatures.length !== 0){
           let index = Math.round(Math.random()*(this.filterFeatures.length-1))
           let id = parseInt(this.filterFeatures[index].id)
@@ -112,7 +213,8 @@ this.noneFound = true;        }
           this.onDisplay()
         }
          else{
-this.noneFound = true;        }
+            this.noneFound = true;       
+           }
   }
   
   private readCsvData() {
