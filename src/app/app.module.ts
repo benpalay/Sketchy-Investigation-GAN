@@ -6,6 +6,8 @@ import { ImagesComponent } from './components/images/images.component';
 import { InputsComponent } from './components/inputs/inputs.component';
 import { FormsModule } from '@angular/forms';
 import { FilterService } from './components/services/filter.service';
+import { FirebaseService } from './components/services/firebase.service';
+
 import { InfoComponent } from './components/info/info.component';
 import { CountdownImageComponent } from './components/countdown-image/countdown-image.component';
 
@@ -21,9 +23,8 @@ import { CountdownImageComponent } from './components/countdown-image/countdown-
     BrowserModule,
     HttpClientModule,
     FormsModule 
-    //MatMenu
   ],
-  providers: [FilterService, Title],
+  providers: [FilterService, FirebaseService,Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

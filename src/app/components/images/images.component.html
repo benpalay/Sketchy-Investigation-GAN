@@ -1,6 +1,35 @@
 <div class="container">
 <!-- <button *ngIf= "timerDone" class="btn btn-primary" (click)="onDisplay()"> Display New Image </button> -->
+
+<div class="none" *ngIf="noneFound">
+      <h1> No More Images Matching the Given Inputs</h1>
 </div>
-<div *ngIf="displayNewImage" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="400%" width="400%">
+<br><br><br><br><br><br>
+<div *ngIf="(displayNewImage && !noneFound)" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="600%" width="600%">
 </div>
+
+<div class="col-xs-7" *ngIf="(displayNewImage && !noneFound)" >
+<h3 >Whenever you are ready, please submit a LIKENESS rating</h3>
+<h5> 1 being 'does not resemble the person at all' and 5 being 'the exact face'</h5>
+<form (ngSubmit)="onLikeness()">
+
+            <input type="radio" id="one" name="Rating" value='1' (change)="onChangeRating($event)">
+            <label style="padding-right: 2%;" for="one">1</label>
+            <input type="radio" id="two" name="Rating" value='2' (change)="onChangeRating($event)">
+            <label style="padding-right: 2%;" for="two">2</label>
+            <input type="radio" id="three" name="Rating" value='3' (change)="onChangeRating($event)">
+            <label style="padding-right: 2%;" for="three">3</label>
+            <input type="radio" id="four" name="Rating" value='4' (change)="onChangeRating($event)">
+            <label style="padding-right: 2%;" for="four">4</label>
+            <input type="radio" id="five" name="Rating" value='5' (change)="onChangeRating($event)">
+            <label style="padding-right: 2%;" for="five"> 5</label> 
+            <br>
+
+      <input type="submit" value="Submit">
+
+</form>
+</div>
+</div>
+
+
 
