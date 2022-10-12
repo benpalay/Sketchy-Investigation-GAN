@@ -1,7 +1,10 @@
 <h1>Description</h1>
 <div class="initial" *ngIf="!initialSubmitted">
       <form (ngSubmit)="onSubmit()">
-             <h3>Ethnicity:</h3>
+
+        <div class="col-xs-4">
+<br>
+             <h4>Ethnicity:</h4>
               <input type="radio" id="black" name="ethnicity" value="black" (change)="onChangeEthnicity($event)">
               <label for="Black">Black</label><br>
               <input type="radio" id="white" name="ethnicity" value="white" (change)="onChangeEthnicity($event)">
@@ -13,29 +16,30 @@
               <input type="radio" id="other" name="ethnicity" value="" (change)="onChangeEthnicity($event)">
               <label for="other"> Unknown/Other</label><br>
             <!-- middle eastern, latina? -->
-
+</div>
             <br>
+      <div class="col-xs-4">
 
-            <h3>Gender:</h3>
+            <h4>Gender:</h4>
             <input type="radio" id="male" name="gender" value="Man" (change)="onChangeGender($event)">
             <label for="gender1"> Man</label><br>
             <input type="radio" id="female" name="gender" value="Woman" (change)="onChangeGender($event)">
             <label for="gender2"> Woman</label><br>
             <input type="radio" id="unknown" name="gender" value="" (change)="onChangeGender($event)">
             <label for="gender3"> Unknown/Other</label><br>
-            
+            </div>
             <br>
 
             <div class="col-xs-4">
-                  <h3>Hair Colour:</h3>
+                  <h4>Hair Colour:</h4>
             </div>
             <br>
             <div class="col-xs-4">
-                  <h3>Hair Length:</h3>
+                  <h4>Hair Length:</h4>
             </div>
 
             <div class="col-xs-4">
-                  <h3>Eye Colour:</h3>
+                  <h4>Eye Colour:</h4>
                   <input type="radio" id="brown" name="EyeColor" value="brown" (change)="onChangeEyeColor($event)">
                     <label for="brown">Brown</label><br>
                   <input type="radio" id="blue" name="EyeColor" value="blue" (change)="onChangeEyeColor($event)">
@@ -60,7 +64,7 @@
       <input type="submit" value="Update"><br>
       
 <div class="col-xs-4">
-      <h3>Eye Size:</h3>
+      <h4>Eye Size:</h4>
       <input type="radio" id="smaller" name="EyeSize" value="smaller" (change)="onChangeEyeSize($event)">
         <label for="smaller">Smaller</label><br>
       <input type="radio" id="bigger" name="EyeSize" value="bigger" (change)="onChangeEyeSize($event)">
@@ -69,7 +73,7 @@
         <label for="uknown">Uknown</label><br>
 </div>
 <div class="col-xs-4">
-      <h3>Eye Spacing:</h3>
+      <h4>Eye Spacing:</h4>
             <input type="radio" id="EyeSpacing1" name="EyeSpacing" value="smaller" (change)="onChangeEyeSpacing($event)">
             <label for="EyeSpacing1">Smaller</label><br>
             <input type="radio" id="EyeSpacing2" name="EyeSpacing" value="bigger" (change)="onChangeEyeSpacing($event)">
@@ -81,7 +85,7 @@
 
 
 <div class="col-xs-4">
-      <h3>Nose Width:</h3>
+      <h4>Nose Width:</h4>
       <input type="radio" id="NoseWidth1" name="NoseWidth" value="smaller" (change)="onChangeNoseWidth($event)">
       <label for="NoseWidth1">Smaller</label><br>
       <input type="radio" id="NoseWidth2" name="NoseWidth" value="bigger" (change)="onChangeNoseWidth($event)">
@@ -90,7 +94,7 @@
       <label for="NoseWidth2">Unknown</label><br>
 </div>
 <div class="col-xs-4">
-<h3>Nose Length:</h3>
+<h4>Nose Length:</h4>
 <input type="radio" id="NoseLength1" name="NoseLength" value="smaller" (change)="onChangeNoseLength($event)">
 <label for="NoseLength1">Smaller</label><br>
 <input type="radio" id="NoseLength2" name="NoseLength" value="bigger" (change)="onChangeNoseLength($event)">
@@ -101,7 +105,7 @@
 
 <br>
 <div class="col-xs-4">
-<h3>Face Area:</h3>
+<h4>Face Area:</h4>
 <input type="radio" id="FaceArea1" name="FaceArea" value="smaller" (change)="onChangeFaceArea($event)">
 <label for="FaceArea1">Smaller</label><br>
 <input type="radio" id="FaceArea2" name="FaceArea" value="bigger" (change)="onChangeFaceArea($event)">
@@ -111,7 +115,7 @@
 </div>
 
 <div class="col-xs-4">
-<h3>Mouth Width:</h3>
+<h4>Mouth Width:</h4>
 <input type="radio" id="MouthWidth1" name="MouthWidth" value="smaller" (change)="onChangeMouthWidth($event)">
 <label for="MouthWidth1">Smaller</label><br>
 <input type="radio" id="MouthWidth2" name="MouthWidth" value="bigger" (change)="onChangeMouthWidth($event)">
@@ -121,7 +125,7 @@
 </div>
 
 <div class="col-xs-4">
-<h3>Lip Thickness:</h3>
+<h4>Lip Thickness:</h4>
 <input type="radio" id="LipThickness1" name="LipThickness" value="smaller" (change)="onChangeLipThickness($event)">
 <label for="LipThickness1">Smaller</label><br>
 <input type="radio" id="LipThickness2" name="LipThickness" value="bigger" (change)="onChangeLipThickness($event)">
@@ -132,7 +136,7 @@
 
 <br>
 <div class="col-xs-4">
-<h3>Emotion:</h3>
+<h4>Emotion:</h4>
 <input type="radio" id="Emotion1" name="Emotion" value="neutral" (change)="onChangeEmotion($event)">
 <label for="Emotion1">Neutral</label><br>
 <input type="radio" id="Emotion2" name="Emotion" value="happy" (change)="onChangeEmotion($event)">
@@ -143,7 +147,9 @@
 <input type="radio" id="Emotion4" name="Emotion" value="" (change)="onChangeEmotion($event)">
 <label for="Emotion4">Unknown/Other</label><br>
 </div>
-      <h3>Age:</h3>
+<br>
+<div class="col-xs-4">
+      <h4>Age:</h4>
       <input type="radio" id="age1" name="age" value="18" (change)="onChangeAge($event)">
       <label for="age1">0 - 18</label><br>
       <input type="radio" id="age2" name="age" value="40" (change)="onChangeAge($event)">
@@ -152,7 +158,7 @@
       <label for="age3">40-100</label><br>
       <input type="radio" id="age4" name="age" value="" (change)="onChangeAge($event)">
       <label for="age4">Unknown</label><br>
-      
+      </div>
       <br><br> 
 
             

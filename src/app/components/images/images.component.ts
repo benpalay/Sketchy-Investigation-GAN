@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { features } from 'src/app/models/features.model';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { FilterService } from '../services/filter.service';
 
  @Component({
@@ -20,6 +20,8 @@ export class ImagesComponent implements OnInit {
   public initFilterFeatures: any[] = []
   public filterFeatures: any[] = [];
   public chosenFeatures: features;
+  public rating: any
+  public iterations:any
 
   public gender:String
   public ethnicity:String
@@ -52,7 +54,8 @@ export class ImagesComponent implements OnInit {
   constructor( private http: HttpClient, private filterService: FilterService) { }
   
   ngOnInit(): void {
-  
+   
+    this.iterations=0;
    
     this.readCsvData()
     
@@ -75,11 +78,23 @@ export class ImagesComponent implements OnInit {
       this.emotion = data.emotion
       this.faceArea = data.faceArea
       this.lipThickness = data.lipThickness
-
+      this.iterations +=1;
       this.findNewImage()
     })
   }
   
+ public onChangeRating(e:any) {
+    this.rating= e.target.value;
+}
+
+public onLikeness(){
+ let date = new Date()
+  let rating2={'rating': this.rating, 'iterations':this.iterations, 'UTC time': date}
+  this.http.post('https://sketchy-dd393-default-rtdb.europe-west1.firebasedatabase.app/tests.json', rating2)
+  .subscribe(res=> {})
+
+}
+
   private findInitialImage(){
 
     //put eye colour here, as well as hair colour and length/facil hair
