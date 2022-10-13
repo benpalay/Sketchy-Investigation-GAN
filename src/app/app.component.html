@@ -10,10 +10,22 @@
 
 <div class="container" *ngIf="timerDone">
   <div class="col-xs-6">
-    <app-inputs></app-inputs><br><br><br><br><br><br><br>
+    <app-inputs *ngIf = "!submitted"></app-inputs><br><br><br><br><br><br><br>
   </div>
   <div class="col-xs-6">
-    <app-images ></app-images>
+    <app-images (onSubmit)="submit($event)" *ngIf = "!submitted"></app-images>
   </div>
+</div>
+
+<div class="container2" *ngIf="submitted" (initialImage)="dispInitial($any($event))"  (finalImage)="dispFinal($any($event))">
+  <h2 style="text-align:center">Thank you!</h2>
+
+<div  class = "col-xs-6" style="display: table-cell;"> 
+  <h3>Initial Image</h3><img class="img-responsive"
+    src='assets/face ({{imageIndexInitial}}).jpg' alt='image' height="450" width="450">
+</div>
+<div class = "col-xs-6" style="display: table-cell;"><h3>Final Image</h3> <img class="img-responsive" src='assets/face ({{imageIndexFinal}}).jpg' alt='image'
+    height="450" width="450">
+</div>
 </div>
 </div>

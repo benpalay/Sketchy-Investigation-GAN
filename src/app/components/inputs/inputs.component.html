@@ -1,6 +1,6 @@
 <h1 style="background-color:rgb(143, 169, 216)">Description:</h1>
 
-<div class="initial" *ngIf="!initialSubmitted">
+<div class="initial" *ngIf="(!initialSubmitted)">
       <p style="background-color: rgb(143, 169, 216);"> Describe the image you saw as well as you can </p>
       <form (ngSubmit)="onSubmit()">
 
@@ -60,7 +60,7 @@
       </div>
 
 
-      <div class="updates" *ngIf="initialSubmitted">
+      <div class="updates" *ngIf="(initialSubmitted)">
       <p class = "col-xs-9"style="display:inline-block; background-color: rgb(143, 169, 216); "> Click update to find a new image matching the descriptions </p>
 
 <form (ngSubmit)="Update()">
@@ -168,5 +168,6 @@
 <br><br><br><br><br>
 
 </form>
+<button class="btn btn-primary" (click)="goBack()"> Go Back</button>
 
 <br><br><br><br><br><br><br><br><br><br>
