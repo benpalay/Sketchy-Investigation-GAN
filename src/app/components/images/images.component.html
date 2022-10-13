@@ -1,15 +1,15 @@
-<div class="container">
+<div class="container" >
 <!-- <button *ngIf= "timerDone" class="btn btn-primary" (click)="onDisplay()"> Display New Image </button> -->
 
 <div class="none" *ngIf="noneFound">
       <h1> No More Images Matching the Given Inputs</h1>
 </div>
-<br><br><br><br><br><br>
-<div *ngIf="(displayNewImage && !noneFound)" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="600%" width="600%">
+<br>
+<div *ngIf="(displayNewImage && !noneFound)" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="450" width="450">
 </div>
 
 <div class="col-xs-7" *ngIf="(displayNewImage && !noneFound)" >
-<h3 >Whenever you are ready, please submit a LIKENESS rating</h3>
+<h3 >When ready, please submit a LIKENESS rating</h3>
 <h5> 1 being 'does not resemble the person at all' and 5 being 'the exact face'</h5>
 <form (ngSubmit)="onLikeness()">
 
@@ -25,11 +25,8 @@
             <label style="padding-right: 2%;" for="five"> 5</label> 
             <br>
 
-      <input type="submit" value="Submit">
+      <input  class = "btn btn-success" type="submit" value="Submit">
 
 </form>
 </div>
 </div>
-
-
-

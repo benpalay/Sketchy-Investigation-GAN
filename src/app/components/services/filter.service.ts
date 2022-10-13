@@ -8,6 +8,8 @@ export class FilterService{
 
 public features: Subject<features> = new Subject();
 public initialFeatures: Subject<features> = new Subject();
+public indexFinal: Subject<any> = new Subject();
+public indexInitial: Subject<any> = new Subject();
 
 public imagesRead: Subject<any>= new Subject();
 

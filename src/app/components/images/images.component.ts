@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { features } from 'src/app/models/features.model';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { FilterService } from '../services/filter.service';
@@ -22,6 +22,10 @@ export class ImagesComponent implements OnInit {
   public chosenFeatures: features;
   public rating: any
   public iterations:any
+  public submitted: Boolean=false;
+  @Output() 
+  onSubmit: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+  @Output() finalImage = new EventEmitter<{img:number}>();
 
   public gender:String
   public ethnicity:String
@@ -92,7 +96,9 @@ public onLikeness(){
   let rating2={'rating': this.rating, 'iterations':this.iterations, 'UTC time': date}
   this.http.post('https://sketchy-dd393-default-rtdb.europe-west1.firebasedatabase.app/tests.json', rating2)
   .subscribe(res=> {})
-
+  this.submitted =true;
+  this.onSubmit.emit(true)
+  this.filterService.indexFinal.next(this.imageIndex)
 }
 
   private findInitialImage(){

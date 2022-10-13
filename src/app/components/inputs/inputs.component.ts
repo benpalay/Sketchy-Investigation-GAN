@@ -9,6 +9,7 @@ import { FilterService } from '../services/filter.service';
 })
 export class InputsComponent implements OnInit {
 
+  goback:Boolean=false;
   age: String = '';
   ethnicity: String = '';
   gender:String = '';
@@ -73,7 +74,9 @@ export class InputsComponent implements OnInit {
      'faceArea':this.faceArea})
   }
 
-
+public goBack(){
+   this.initialSubmitted = false;
+}
  onChangeEthnicity(e:any) {
     this.ethnicity= e.target.value;
 }

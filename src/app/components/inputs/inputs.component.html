@@ -1,5 +1,7 @@
-<h1>Description</h1>
-<div class="initial" *ngIf="!initialSubmitted">
+<h1 style="background-color:rgb(143, 169, 216)">Description:</h1>
+
+<div class="initial" *ngIf="(!initialSubmitted)">
+      <p style="background-color: rgb(143, 169, 216);"> Describe the image you saw as well as you can </p>
       <form (ngSubmit)="onSubmit()">
 
         <div class="col-xs-4">
@@ -52,16 +54,17 @@
                     <label for="other">Unknown/Other</label><br>
             </div>
       
-      <input type="submit" value="Submit">
+      <input  class = "btn btn-primary" type="submit" value="Find Image">
 
       </form>
       </div>
 
 
-      <div class="updates" *ngIf="initialSubmitted">
+      <div class="updates" *ngIf="(initialSubmitted)">
+      <p class = "col-xs-9"style="display:inline-block; background-color: rgb(143, 169, 216); "> Click update to find a new image matching the descriptions </p>
 
 <form (ngSubmit)="Update()">
-      <input type="submit" value="Update"><br>
+      <input class = "btn btn-primary" type="submit" value="Update" style="display:inline-block;"><br>
       
 <div class="col-xs-4">
       <h4>Eye Size:</h4>
@@ -162,7 +165,9 @@
       <br><br> 
 
             
-
+<br><br><br><br><br>
 
 </form>
+<button class="btn btn-primary" (click)="goBack()"> Go Back</button>
 
+<br><br><br><br><br><br><br><br><br><br>
