@@ -30,6 +30,7 @@ export class ImagesComponent implements OnInit {
   public gender:String
   public ethnicity:String
   public eyeColour:String
+  public hairColour:String
   public noseWidth:String
   public noseLength:String
   public faceArea:String
@@ -68,6 +69,7 @@ export class ImagesComponent implements OnInit {
       this.ethnicity = data.ethnicity
       this.gender = data.gender
       this.eyeColour = data.eyeColour
+      this.hairColour = data.hairColour
       //hair stuff
       this.findInitialImage()
     })
@@ -94,7 +96,7 @@ export class ImagesComponent implements OnInit {
 public onLikeness(){
  let date = new Date()
   let rating2={'rating': this.rating, 'iterations':this.iterations, 'UTC time': date}
-  this.http.post('https://sketchy-dd393-default-rtdb.europe-west1.firebasedatabase.app/tests.json', rating2)
+  this.http.post('https://sketchy-dd393-default-rtdb.europe-west1.firebasedatabase.app/results750.json', rating2)
   .subscribe(res=> {})
   this.submitted =true;
   this.onSubmit.emit(true)
@@ -117,6 +119,14 @@ public onLikeness(){
     if(this.eyeColour!==""){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.eyeColour === this.eyeColour)
+    }
+    if(this.hairColour==="blonde" && this.gender === "Woman"){
+      this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
+          feature.hairColour === "brown")
+    }
+    if(this.hairColour!==""){
+      this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
+          feature.hairColour === this.hairColour)
     }
 
     if(this.initialFilterFeatures.length !== 0){
@@ -267,7 +277,7 @@ public onLikeness(){
     let csvArr = [];  
   
     //for (let i = 1; i < csvRecordsArray.length; i++) {  
-      for (let i = 1; i < 201; i++) {
+      for (let i = 1; i < 751; i++) {
         let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
         let csvRecord: features = new features();  
         csvRecord.id = curruntRecord[0].trim();
