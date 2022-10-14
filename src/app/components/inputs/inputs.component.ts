@@ -14,6 +14,7 @@ export class InputsComponent implements OnInit {
   ethnicity: String = '';
   gender:String = '';
   eyeColour:String = '';
+  hairColour:String = '';
   eyeSize:String = '';
   eyeSpacing:String = '';
   noseWidth:String = '';
@@ -41,7 +42,7 @@ export class InputsComponent implements OnInit {
      'ethnicity':this.ethnicity,
      'skinColour':"",
      'eyeColour':this.eyeColour,
-     'hairColour':"",
+     'hairColour':this.hairColour,
      'noseWidth':"",
      'noseHeight':"",
      'eyeWidth':"",
@@ -87,6 +88,10 @@ public goBack(){
 
 onChangeEyeColor(e:any) {
    this.eyeColour= e.target.value;
+}
+
+onChangeHairColor(e:any) {
+   this.hairColour= e.target.value;
 }
 
 onChangeEyeSize(e:any) {
