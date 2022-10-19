@@ -116,7 +116,7 @@ public onLikeness(){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.gender === this.gender)
     }
-    if(this.eyeColour!==""){
+    if(this.eyeColour!=="" && this.ethnicity!=="white"){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.eyeColour === this.eyeColour)
     }
@@ -126,7 +126,7 @@ public onLikeness(){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.hairColour === this.hairColour)
     }
-
+    
     if(this.initialFilterFeatures.length !== 0){
           console.log('initial', this.initialFilterFeatures)
           let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
