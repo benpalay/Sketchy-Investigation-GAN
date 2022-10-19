@@ -120,10 +120,8 @@ public onLikeness(){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.eyeColour === this.eyeColour)
     }
-    if(this.hairColour==="blonde" && this.gender === "Woman"){
-      this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
-          feature.hairColour === "brown")
-    }
+ 
+    
     if(this.hairColour!==""){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.hairColour === this.hairColour)
