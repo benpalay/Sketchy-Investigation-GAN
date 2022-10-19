@@ -4,8 +4,9 @@
       <p style="background-color: rgb(143, 169, 216);"> Describe the image you saw as well as you can </p>
       <form (ngSubmit)="onSubmit()">
 <input class="btn btn-primary" type="submit" value="Find Image">
+<div class="col-xs-12">
         <div class="col-xs-6">
-<br><br>
+
              <h4>Ethnicity:</h4>
               <input type="radio" id="black" name="ethnicity" value="black" (change)="onChangeEthnicity($event)">
               <label for="Black">Black</label><br>
@@ -19,7 +20,7 @@
               <label for="other"> Unknown/Other</label><br>
             <!-- middle eastern, latina? -->
 </div>
-            <br>
+            
       <div class="col-xs-6">
 
             <h4>Gender:</h4>
@@ -30,26 +31,15 @@
             <input type="radio" id="unknown" name="gender" value="" (change)="onChangeGender($event)">
             <label for="gender3"> Unknown/Other</label><br>
       </div>
-            <br>
-
-            <div class="col-xs-6">
-                  <h4>Hair Colour:</h4>
-                  <input type="radio" id="brown" name="HairColor" value="brown" (change)="onChangeHairColor($event)">
-                    <label for="brown">Brown</label><br>
-                  <input type="radio" id="black" name="HairColor" value="black" (change)="onChangeHairColor($event)">
-                    <label for="blue">Black</label><br>
-                  <input type="radio" id="blonde" name="HairColor" value="blonde" (change)="onChangeHairColor($event)">
-                    <label for="blonde">Blonde</label><br>
-                  <input type="radio" id="grey" name="HairColor" value="grey" (change)="onChangeHairColor($event)">
-                    <label for="grey">Grey</label><br>
-                  <input type="radio" id="other" name="HairColor" value="" (change)="onChangeHairColor($event)">
-                    <label for="other">Unknown/Other</label><br>
-            </div>
+            
+</div>
+            
             <!-- <br>
             <div class="col-xs-4">
                   <h4>Hair Length:</h4>
             </div> -->
-
+<hr>
+<div class="col-xs-12">
             <div class="col-xs-6">
                   <h4>Eye Colour:</h4>
                   <input type="radio" id="brown" name="EyeColor" value="brown" (change)="onChangeEyeColor($event)">
@@ -64,6 +54,20 @@
                     <label for="other">Unknown/Other</label><br>
             </div>
 
+<div class="col-xs-6">
+      <h4>Hair Colour:</h4>
+      <input type="radio" id="brown" name="HairColor" value="brown" (change)="onChangeHairColor($event)">
+        <label for="brown">Brown</label><br>
+      <input type="radio" id="black" name="HairColor" value="black" (change)="onChangeHairColor($event)">
+        <label for="blue">Black</label><br>
+      <input type="radio" id="blonde" name="HairColor" value="blonde" (change)="onChangeHairColor($event)">
+        <label for="blonde">Blonde</label><br>
+      <input type="radio" id="grey" name="HairColor" value="grey" (change)="onChangeHairColor($event)">
+        <label for="grey">Grey</label><br>
+      <input type="radio" id="other" name="HairColor" value="" (change)="onChangeHairColor($event)">
+        <label for="other">Unknown/Other</label><br>
+</div>
+</div>
       </form>
       </div>
 
