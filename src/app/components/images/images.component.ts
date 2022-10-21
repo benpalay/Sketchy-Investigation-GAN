@@ -96,7 +96,7 @@ export class ImagesComponent implements OnInit {
 public onLikeness(){
  let date = new Date()
   let rating2={'rating': this.rating, 'iterations':this.iterations, 'UTC time': date}
-  this.http.post('https://sketchy-dd393-default-rtdb.europe-west1.firebasedatabase.app/results750.json', rating2)
+  this.http.post('https://sketchy-dd393-default-rtdb.europe-west1.firebasedatabase.app/results2500.json', rating2)
   .subscribe(res=> {})
   this.submitted =true;
   this.onSubmit.emit(true)
@@ -116,12 +116,11 @@ public onLikeness(){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.gender === this.gender)
     }
-    if(this.eyeColour!=="" && this.ethnicity!=="white"){
+    if(this.eyeColour!==""){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.eyeColour === this.eyeColour)
     }
  
-    
     if(this.hairColour!==""){
       this.initialFilterFeatures = this.initialFilterFeatures.filter(feature => 
           feature.hairColour === this.hairColour)

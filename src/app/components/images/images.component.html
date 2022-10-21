@@ -9,7 +9,7 @@
 <div *ngIf="displayNewImage" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="450" width="450">
 </div>
 
-<div class="col-xs-7" *ngIf="(displayNewImage && !noneFound)" >
+<div class="col-xs-7" *ngIf="displayNewImage" >
 <h3 >When ready, please submit a LIKENESS rating</h3>
 <h5> 1 being 'does not resemble the person at all' and 5 being 'the exact face'</h5>
 <form (ngSubmit)="onLikeness()">
