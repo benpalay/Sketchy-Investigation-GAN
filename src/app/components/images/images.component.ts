@@ -274,7 +274,7 @@ public onLikeness(){
     let csvArr = [];  
   
     //for (let i = 1; i < csvRecordsArray.length; i++) {  
-      for (let i = 1; i < 751; i++) {
+      for (let i = 1; i < 2500; i++) {
         let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
         let csvRecord: features = new features();  
         csvRecord.id = curruntRecord[0].trim();
