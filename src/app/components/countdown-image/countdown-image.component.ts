@@ -9,6 +9,7 @@ import { FilterService } from '../services/filter.service';
 export class CountdownImageComponent implements OnInit {
 
   public imageIndex: number = 0;
+  public countValue:number=10;
 
   @Output() 
   timerDone: EventEmitter<Boolean> = new EventEmitter<Boolean>();
@@ -18,6 +19,7 @@ export class CountdownImageComponent implements OnInit {
 
   ngOnInit(): void {    
     this.chooseRandomIndex()
+    this.timer()
   }
 
 
@@ -28,4 +30,14 @@ export class CountdownImageComponent implements OnInit {
       this.filterService.indexInitial.next(this.imageIndex)
     }, 10000) //display for 10 seconds 
      }
+
+  timer(){
+    var downloadTimer = setInterval(()=>{
+  if(this.countValue <= 0){
+    clearInterval(downloadTimer);
+  }
+  this.countValue -= 1;
+}, 1000);
+
+}
 }

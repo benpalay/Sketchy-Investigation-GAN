@@ -5,7 +5,7 @@
       <form (ngSubmit)="onSubmit()">
 <input class="btn btn-primary" type="submit" value="Find Image">
 <div class="col-xs-12">
-        <div class="col-xs-6">
+        <div class="inputField">
 
              <h4>Ethnicity:</h4>
               <input type="radio" id="black" name="ethnicity" value="black" (change)="onChangeEthnicity($event)">
@@ -16,12 +16,16 @@
               <label for="Asian">Asian</label><br>
               <input type="radio" id="indian" name="ethnicity" value="indian" (change)="onChangeEthnicity($event)">
               <label for="Indian">Indian</label><br>
-              <input type="radio" id="other" name="ethnicity" value="" (change)="onChangeEthnicity($event)">
-              <label for="other"> Unknown/Other</label><br>
-            <!-- middle eastern, latina? -->
+            <input type="radio" id="other" name="ethnicity" value="latino hispanic" (change)="onChangeEthnicity($event)">
+            <label for="Latino Hispanic">Latino Hispanic</label><br>
+            <input type="radio" id="other" name="ethnicity" value="middle eastern" (change)="onChangeEthnicity($event)">  
+            <label for="Middle Eastern">Middle Eastern</label><br>
+            <input type="radio" id="other" name="ethnicity" value="" (change)="onChangeEthnicity($event)">
+            
+            <label for="other"> Unknown/Other</label><br>
 </div>
             
-      <div class="col-xs-6">
+      <div class="inputField">
 
             <h4>Gender:</h4>
             <input type="radio" id="male" name="gender" value="Man" (change)="onChangeGender($event)">
@@ -40,21 +44,21 @@
             </div> -->
 <hr>
 <div class="col-xs-12">
-            <div class="col-xs-6">
+            <div class="inputField">
                   <h4>Eye Colour:</h4>
                   <input type="radio" id="brown" name="EyeColor" value="brown" (change)="onChangeEyeColor($event)">
                     <label for="brown">Brown</label><br>
                   <input type="radio" id="blue" name="EyeColor" value="grey" (change)="onChangeEyeColor($event)">
                     <label for="blue">Blue</label><br>
-                  <input type="radio" id="black" name="EyeColor" value="black" (change)="onChangeEyeColor($event)">
-                    <label for="black">Black</label><br>
+                  <!-- <input type="radio" id="black" name="EyeColor" value="black" (change)="onChangeEyeColor($event)">
+                    <label for="black">Black</label><br> -->
                   <input type="radio" id="green" name="EyeColor" value="grey" (change)="onChangeEyeColor($event)">
                     <label for="green">Green</label><br>
                   <input type="radio" id="other" name="EyeColor" value="" (change)="onChangeEyeColor($event)">
                     <label for="other">Unknown/Other</label><br>
             </div>
 
-<div class="col-xs-6">
+<div class="inputField">
       <h4>Hair Colour:</h4>
       <input type="radio" id="brown" name="HairColor" value="brown" (change)="onChangeHairColor($event)">
         <label for="brown">Brown</label><br>
