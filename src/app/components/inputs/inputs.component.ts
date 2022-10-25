@@ -78,6 +78,8 @@ export class InputsComponent implements OnInit {
 public goBack(){
    this.initialSubmitted = false;
 }
+
+
  onChangeEthnicity(e:any) {
     this.ethnicity= e.target.value;
 }

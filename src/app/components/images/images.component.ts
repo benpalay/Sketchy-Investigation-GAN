@@ -12,6 +12,7 @@ import { FilterService } from '../services/filter.service';
 export class ImagesComponent implements OnInit {
 
   public imageIndex: number = 0;
+  public prevImageIndex:number=0;
   public timerDone: Boolean = false;
   public displayNewImage: Boolean = false;
   public noneFound: Boolean = false;
@@ -42,6 +43,7 @@ export class ImagesComponent implements OnInit {
   public eyeSize:String
 
   public imageShown:any
+  public firstUpdate = false
   public originalNoseWidth:any
   public originalEyeSpacing:any
   public originalEyeSize:any
@@ -72,6 +74,7 @@ export class ImagesComponent implements OnInit {
       this.hairColour = data.hairColour
       //hair stuff
       this.findInitialImage()
+      this.prevImageIndex= this.imageIndex
     })
 
     this.filterService.features.subscribe(data => {
@@ -85,10 +88,16 @@ export class ImagesComponent implements OnInit {
       this.faceArea = data.faceArea
       this.lipThickness = data.lipThickness
       this.iterations +=1;
+      this.prevImageIndex = this.imageIndex
+      this.firstUpdate = true;
       this.findNewImage()
     })
   }
   
+  public previousImage(){
+    this.imageIndex = this.prevImageIndex
+    this.firstUpdate = false;
+  }
  public onChangeRating(e:any) {
     this.rating= e.target.value;
 }

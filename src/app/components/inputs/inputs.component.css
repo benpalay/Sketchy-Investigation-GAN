@@ -4,4 +4,6 @@ h4{
 
 .inputField{
       display: table-cell;
+      display: inline-block;
+      padding-right: 20px;
 }
