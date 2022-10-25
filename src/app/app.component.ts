@@ -51,4 +51,8 @@ export class AppComponent implements OnInit {
   initialSubmit(event: Boolean){
       this.initialSubmitted = event;
   }
+  startAgain(){
+    location.reload();
+
+  }
 }
