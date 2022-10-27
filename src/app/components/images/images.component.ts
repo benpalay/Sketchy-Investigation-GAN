@@ -152,6 +152,19 @@ public onLikeness(){
            }
   }
 
+  newnewImage(){
+     if(this.initialFilterFeatures.length !== 0){
+          console.log('initial', this.initialFilterFeatures)
+          let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
+          let id = parseInt(this.initialFilterFeatures[index].id) 
+          this.imageIndex = id +1 
+
+          this.onDisplay()
+        }
+        else{
+          this.noneFound = true;     
+           }
+  }
   
   private findNewImage(){
     this.noneFound = false;

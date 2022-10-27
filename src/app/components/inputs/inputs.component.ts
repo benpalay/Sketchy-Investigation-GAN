@@ -18,7 +18,7 @@ export class InputsComponent implements OnInit {
   eyeSize:String = '';
   eyeSpacing:String = '';
   noseWidth:String = '';
-  noseLength:String = '';
+  noseLength:String = "";
   emotion:String='';
   mouthWidth:String='';
   lipThickness:String='';

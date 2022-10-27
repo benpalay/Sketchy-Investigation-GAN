@@ -5,6 +5,9 @@
       <h1> No More Images Matching the Given Inputs</h1>
       <p style="display:inline-block;">Try selecting different features or mark them unknown </p><p>click Update
       , or click Go Back to redo the initial features</p>
+      <div *ngIf="firstUpdate" class="btn btn-primary" (click)="newnewImage()">
+            Find a New Image matching only the initial features
+      </div>
 </div>
 <br>
 <div *ngIf="displayNewImage" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="450" width="450">
