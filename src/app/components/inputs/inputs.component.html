@@ -77,11 +77,11 @@
 
 
       <div class="updates" *ngIf="(initialSubmitted)">
-      <p class = "col-xs-9"style="display:inline-block; background-color: rgb(143, 169, 216); "> Click update to find a new image matching the descriptions </p>
+      <p class = "col-xs-9"style="display:inline-block; background-color: rgb(143, 169, 216); "> Click update to find a new image matching the descriptions. All features are optional to select. You can click unknown if there are no more available images and cick update again </p>
 
 <form (ngSubmit)="Update()">
       <input class = "btn btn-primary" type="submit" value="Update" style="display:inline-block;"><br>
-      
+      <br><br>
 <div class="inputField">
       <h4>Eye Size:</h4>
       <input type="radio" id="smaller" name="EyeSize" value="smaller" (change)="onChangeEyeSize($event)">
