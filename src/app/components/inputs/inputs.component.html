@@ -1,7 +1,8 @@
-<h1 style="background-color:rgb(143, 169, 216)">Description:</h1>
+<h3 style="background-color:rgb(143, 169, 216)"> Try to describe the image you just saw</h3>
 
 <div class="initial" *ngIf="(!initialSubmitted)">
-      <p style="background-color: rgb(143, 169, 216);"> Describe the image you saw as well as you can </p>
+            <!-- <p style="background-color: rgb(143, 169, 216);"> Describe the image you saw as well as you can </p> -->
+
       <form (ngSubmit)="onSubmit()">
 <input class="btn btn-primary" type="submit" value="Find Image"><br>
 <div class="inputField">
@@ -76,13 +77,15 @@
       </div>
 
 
-      <div class="updates" *ngIf="(initialSubmitted)">
-      <p class = "col-xs-9"style="display:inline-block; background-color: rgb(143, 169, 216); "> Click update to find a new image matching the descriptions. All features are optional to select. You can click unknown if there are no more available images and cick update again </p>
+      <div class="updates" *ngIf="(initialSubmitted)" style="display: block;">
+      <p class = "col-xs-9"style="display:block; background-color: rgb(143, 169, 216); "> Was the nose of the original image bigger than the image shown on the right? etc. Click UPDATE to find a new image matching the descriptions.
 
+       Features are optional, click unknown if there are no more available images and update </p>
+      </div>
+      <div class="updates" *ngIf="(initialSubmitted)" style="display: block;">
 <form (ngSubmit)="Update()">
-      <input class = "btn btn-primary" type="submit" value="Update" style="display:inline-block;"><br>
-      <br><br>
-<div class="inputField">
+      <input class = "btn btn-primary" type="submit" value="Update" ><br><br><br><br>
+<div class="inputField" >
       <h4>Eye Size:</h4>
       <input type="radio" id="smaller" name="EyeSize" value="smaller" (change)="onChangeEyeSize($event)">
         <label for="smaller">Smaller</label><br>
