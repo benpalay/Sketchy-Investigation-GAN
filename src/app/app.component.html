@@ -1,4 +1,3 @@
-
 <div class="host" style="background-color:powderblue;">
 <div class="info" *ngIf="!isReady">
   <app-info (ready)="onReady($event)"></app-info>
@@ -8,16 +7,64 @@
   <app-countdown-image (timerDone)="onTimer($event)"></app-countdown-image>
 </div>
 
-<div class="container" *ngIf="timerDone">
+<div class="container" *ngIf="(timerDone && !tenReceived && !finalSubmitted)">
   <div class="col-xs-6">
     <app-inputs *ngIf = "!submitted"></app-inputs><br><br><br><br><br><br><br>
   </div>
   <div class="col-xs-6">
-    <app-images (onSubmit)="submit($event)" *ngIf = "!submitted"></app-images>
+    <app-images (onSubmit)="submit($event)" *ngIf = "!tenReceived"></app-images>
   </div>
 </div>
 
-<div class="container2" *ngIf="submitted" (initialImage)="dispInitial($any($event))"  (finalImage)="dispFinal($any($event))">
+<div class="container" *ngIf="(tenReceived && !finalClicked && !finalSubmitted)" (iterationsEmitter) = setIterations($event)>
+
+  <h3> Choose an image that looks most like the original</h3>
+  <div class="container"  style="display:inline-block;">
+    <div (click)="finalImage(1)" style="display: table-cell;"> <img class="img-responsive" src='assets/face ({{imageIndex1}}).jpg' alt='image'
+        height="300px" width="300px"> </div>
+    <div (click)="finalImage(2)" style="display: table-cell;"> <img class="img-responsive" src='assets/face ({{imageIndex2}}).jpg' alt='image'
+        height="300px" width="300px"> </div>
+    <div (click)="finalImage(3)" style="display: table-cell;"> <img class="img-responsive" src='assets/face ({{imageIndex3}}).jpg' alt='image'
+        height="300px" width="300px"> </div><br>
+        
+    <div (click)="finalImage(4)" style="display: table-cell;"> <img class="img-responsive"
+        src='assets/face ({{imageIndex4}}).jpg' alt='image' height="300px" width="300px"> </div>
+    <div (click)="finalImage(5)" style="display: table-cell;"> <img class="img-responsive"
+        src='assets/face ({{imageIndex5}}).jpg' alt='image' height="300px" width="300px"> </div>
+    <div (click)="finalImage(6)" style="display: table-cell;"> <img class="img-responsive"
+        src='assets/face ({{imageIndex6}}).jpg' alt='image' height="300px" width="300px"> </div>
+  </div>
+  </div>
+
+
+  <div class="container" *ngIf="(finalClicked && !submitted2 && !finalSubmitted)">
+    <div style="display: table-cell;"> <img class="img-responsive"
+        src='assets/face ({{imageIndexFinal}}).jpg' alt='image' height="200" width="200"> </div>
+
+       <h3> Please submit a LIKENESS rating</h3>
+        <h5> 1 being 'does not resemble the original person at all' and 5 being 'the exact face'</h5>
+        <form (ngSubmit)="onLikeness()">
+        
+          <input type="radio" id="one" name="Rating" value='1' (change)="onChangeRating($event)">
+          <label style="padding-right: 2%;" for="one">1</label>
+          <input type="radio" id="two" name="Rating" value='2' (change)="onChangeRating($event)">
+          <label style="padding-right: 2%;" for="two">2</label>
+          <input type="radio" id="three" name="Rating" value='3' (change)="onChangeRating($event)">
+          <label style="padding-right: 2%;" for="three">3</label>
+          <input type="radio" id="four" name="Rating" value='4' (change)="onChangeRating($event)">
+          <label style="padding-right: 2%;" for="four">4</label>
+          <input type="radio" id="five" name="Rating" value='5' (change)="onChangeRating($event)">
+          <label style="padding-right: 2%;" for="five"> 5</label>
+          <br>
+        
+          <input class="btn btn-success" type="submit" value="Submit">
+        
+        </form>
+        <br><br><br><br><br><br>
+  </div>
+
+
+<div class="container2"  *ngIf="(submitted2 || finalSubmitted)">
   <div class="ending">
   <h2 style="text-align:center">Thank you!</h2><div class="btn btn-primary" (click)="startAgain()" style="text-align:center">
     Start Again

@@ -12,6 +12,9 @@ import { FilterService } from '../services/filter.service';
 export class ImagesComponent implements OnInit {
 
   public imageIndex: number = 0;
+  public imageIndex1: number = 0;
+  public imageIndex2: number = 0;
+  public imageIndex3: number = 0;
   public prevImageIndex:number=0;
   public timerDone: Boolean = false;
   public displayNewImage: Boolean = false;
@@ -24,10 +27,11 @@ export class ImagesComponent implements OnInit {
   public rating: any
   public iterations:any
   public submitted: Boolean=false;
+  public tenImages: Boolean = false;
+  @Output() iterationsEmitter: EventEmitter<any> = new EventEmitter<any>()
   @Output() 
   onSubmit: EventEmitter<Boolean> = new EventEmitter<Boolean>();
   @Output() finalImage = new EventEmitter<{img:number}>();
-
   public gender:String
   public ethnicity:String
   public eyeColour:String
@@ -102,9 +106,9 @@ export class ImagesComponent implements OnInit {
     this.rating= e.target.value;
 }
 
-public onLikeness(){
+public successful(){
  let date = new Date()
-  let rating2={'rating': this.rating, 'iterations':this.iterations, 'UTC time': date}
+  let rating2={'rating': 5, 'iterations':this.iterations, 'UTC time': date}
   this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results2500.json', rating2)
   .subscribe(res=> {})
   this.submitted =true;
@@ -140,7 +144,7 @@ public onLikeness(){
     }
     
     if(this.initialFilterFeatures.length !== 0){
-          console.log('initial', this.initialFilterFeatures)
+          //console.log('initial', this.initialFilterFeatures)
           let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
           let id = parseInt(this.initialFilterFeatures[index].id) 
           this.imageIndex = id +1 
@@ -153,6 +157,7 @@ public onLikeness(){
   }
 
   newnewImage(){
+    this.iterations+=1
      if(this.initialFilterFeatures.length !== 0){
           //console.log('initial', this.initialFilterFeatures)
           let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
@@ -269,7 +274,45 @@ public onLikeness(){
          else{
             this.noneFound = true;       
            }
+
+           
   }
+
+  public tenRandomImages(){
+    this.tenImages = true;
+    let tenArray:number[] = []
+    let i =0
+    let index =0
+    let id =0
+    this.filterService.iterations.next(this.iterations)
+    tenArray.push(this.imageIndex);
+
+          while(i<this.filterFeatures.length && tenArray.length<6){
+          index = Math.round(Math.random()*(this.filterFeatures.length-1))
+          id = parseInt(this.filterFeatures[index].id)
+          this.imageIndex = id +1
+          if(!tenArray.includes(this.imageIndex)){
+          tenArray.push(this.imageIndex)}
+          i+=1
+        }
+        if((this.initialFilterFeatures.length + tenArray.length)>=6){
+        while(tenArray.length<6){
+          index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
+          id = parseInt(this.initialFilterFeatures[index].id)
+          this.imageIndex = id +1
+      
+          if(!tenArray.includes(this.imageIndex)){
+          tenArray.push(this.imageIndex)
+          }
+    
+        }}
+      
+   
+          //this.submitted =true;
+  //this.onSubmit.emit(true)
+   this.filterService.tenArray.next(tenArray)   
+  //
+}
   
   private readCsvData() {
       this.http.get('assets/features.csv', {responseType: 'text'})

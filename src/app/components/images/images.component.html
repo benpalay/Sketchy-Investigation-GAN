@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container" *ngIf="!tenImages">
 <!-- <button *ngIf= "timerDone" class="btn btn-primary" (click)="onDisplay()"> Display New Image </button> -->
 
 <div class="none" *ngIf="noneFound">
@@ -8,17 +8,29 @@
       <div *ngIf="firstUpdate" class="btn btn-primary" (click)="newnewImage()">
             Find a New Image matching only the initial features
       </div>
+     
 </div>
 <br>
+
 <div *ngIf="displayNewImage" style="display: table-cell;"> <img class="img-responsive" src= 'assets/face ({{imageIndex}}).jpg' alt = 'image' height="450" width="450">
 
       <div *ngIf = "firstUpdate" class="btn btn-primary" (click) = "previousImage()">
              Go to Previous Image
-      </div>
+      </div><br>
 </div>
 
 <div class="col-xs-7" *ngIf="displayNewImage" style="display: inline-block;">
-<h3 >When you have found a face that is very similar or the same as the original, please submit a LIKENESS rating</h3>
+
+      <div class="btn btn-success" (click)="successful()" style="display: inline-block;">
+        This is the same as the original image
+      </div>
+      <br><br>
+      <h4>Change Inputs, 'Update' to get closer to the original image</h4>
+      <h3 style="display: inline-block;">This is close:</h3>
+      <div class="btn btn-primary" (click)="tenRandomImages()" style="display: inline-block;">
+            See 6 similar faces
+      </div>
+<!-- <h3 >When you have found a face that is very similar or the same as the original, please submit a LIKENESS rating</h3>
 <h4>If you want to see more images, click Update!</h4>
 <h5> 1 being 'does not resemble the person at all' and 5 being 'the exact face'</h5>
 <form (ngSubmit)="onLikeness()">
@@ -37,6 +49,7 @@
 
       <input  class = "btn btn-success" type="submit" value="Submit">
 
-</form>
+</form> -->
 </div>
 </div>
+

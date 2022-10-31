@@ -31,7 +31,7 @@ export class CountdownImageComponent implements OnInit {
      setTimeout(()=>{
       this.timerDone.emit(true)
       this.filterService.indexInitial.next(this.imageIndex)
-    }, 10000) //display for 10 seconds 
+    }, 1000) //display for 10 seconds 
      }
 
   timer(){
