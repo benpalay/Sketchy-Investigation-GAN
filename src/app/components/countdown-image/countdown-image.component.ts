@@ -25,6 +25,9 @@ export class CountdownImageComponent implements OnInit {
 
     private chooseRandomIndex(){
      this.imageIndex = Math.ceil(Math.random()*200); //change to 10000 depending on folder size
+     if (this.imageIndex == 8 ||this.imageIndex == 48 ||this.imageIndex == 133  ){
+      this.imageIndex = Math.ceil(Math.random()*200); 
+     }
      setTimeout(()=>{
       this.timerDone.emit(true)
       this.filterService.indexInitial.next(this.imageIndex)
