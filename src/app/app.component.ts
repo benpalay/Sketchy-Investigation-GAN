@@ -95,7 +95,9 @@ this.imageIndex6 = ten[5]}
     location.reload();
 
   }
-
+goBackUpdate(){
+  this.tenReceived = false
+}
   finalImage(finalImageIndex:any){
     this.finalClicked = true;
     if (finalImageIndex==1){
