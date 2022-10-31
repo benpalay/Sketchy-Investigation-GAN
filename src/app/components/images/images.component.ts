@@ -105,7 +105,7 @@ export class ImagesComponent implements OnInit {
 public onLikeness(){
  let date = new Date()
   let rating2={'rating': this.rating, 'iterations':this.iterations, 'UTC time': date}
-  this.http.post('https://sketchy-dd393-default-rtdb.europe-west1.firebasedatabase.app/results2500.json', rating2)
+  this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results2500.json', rating2)
   .subscribe(res=> {})
   this.submitted =true;
   this.onSubmit.emit(true)
@@ -154,7 +154,7 @@ public onLikeness(){
 
   newnewImage(){
      if(this.initialFilterFeatures.length !== 0){
-          console.log('initial', this.initialFilterFeatures)
+          //console.log('initial', this.initialFilterFeatures)
           let index = Math.round(Math.random()*(this.initialFilterFeatures.length-1))
           let id = parseInt(this.initialFilterFeatures[index].id) 
           this.imageIndex = id +1 
@@ -257,7 +257,7 @@ public onLikeness(){
         
 
 
-        console.log(this.filterFeatures)
+        //console.log(this.filterFeatures)
         if(this.filterFeatures.length !== 0){
           let index = Math.round(Math.random()*(this.filterFeatures.length-1))
           let id = parseInt(this.filterFeatures[index].id)
