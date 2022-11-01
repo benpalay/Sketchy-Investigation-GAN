@@ -109,7 +109,7 @@ export class ImagesComponent implements OnInit {
 public successful(){
  let date = new Date()
   let rating2={'rating': 5, 'iterations':this.iterations, 'UTC time': date}
-  this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results2500.json', rating2)
+  this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results4000.json', rating2)
   .subscribe(res=> {})
   this.submitted =true;
   this.onSubmit.emit(true)
@@ -117,7 +117,7 @@ public successful(){
 }
 
   private findInitialImage(){
-
+  this.tenImages =false;
     //put eye colour here, as well as hair colour and length/facil hair
     this.initialFilterFeatures = this.features
 
@@ -343,7 +343,7 @@ public successful(){
     let csvArr = [];  
   
     //for (let i = 1; i < csvRecordsArray.length; i++) {  
-      for (let i = 1; i < 2500; i++) {
+      for (let i = 1; i < 4000; i++) {
         let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
         let csvRecord: features = new features();  
         csvRecord.id = curruntRecord[0].trim();

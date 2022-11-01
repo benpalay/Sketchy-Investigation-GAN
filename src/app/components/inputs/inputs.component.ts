@@ -30,7 +30,14 @@ export class InputsComponent implements OnInit {
 
   constructor(private filterService: FilterService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+   this.filterService.gobackUpdate.subscribe(i=>{
+      
+         this.initialSubmitted = true;
+         
+         this.Update()
+      
+   })
   }  
 
   public onSubmit(){
@@ -50,9 +57,7 @@ export class InputsComponent implements OnInit {
      'eyeSpacing':"",
      'mouthWidth':"",
      'lipThickness':"",
-     'faceArea':""})
-
-     
+     'faceArea':""})   
   }
 
   public Update(){

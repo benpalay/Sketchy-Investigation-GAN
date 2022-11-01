@@ -18,7 +18,7 @@
 
 <div class="container" *ngIf="(tenReceived && !finalClicked && !finalSubmitted)" (iterationsEmitter) = setIterations($event)>
 
-  <h3> Choose an image that looks most like the original</h3>
+  <h3> Click the image that looks most like the original</h3>
   <div class="container"  style="display:inline-block;">
     <div (click)="finalImage(1)" style="display: table-cell;"> <img class="img-responsive" src='assets/face ({{imageIndex1}}).jpg' alt='image'
         height="300px" width="300px"> </div>

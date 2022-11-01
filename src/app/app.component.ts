@@ -24,11 +24,11 @@ export class AppComponent implements OnInit {
      this.filterService.tenArray.subscribe(ten=> {
       this.tenReceived=true;
       this.imageIndex1 = ten[0]
-          this.imageIndex2 = ten[1]
+      this.imageIndex2 = ten[1]
       this.imageIndex3 = ten[2]
-    this.imageIndex4 = ten[3]
-  this.imageIndex5 = ten[4]
-this.imageIndex6 = ten[5]}
+      this.imageIndex4 = ten[3]
+      this.imageIndex5 = ten[4]
+      this.imageIndex6 = ten[5]}
       )
   }
 
@@ -49,16 +49,9 @@ this.imageIndex6 = ten[5]}
   public imageIndex4:number =0;
   public imageIndex5:number =0;
   public imageIndex6:number =0;
-
-
-    
-
   public rating: any
   public iterations:any
 
-
-  
-  
   submit(event: Boolean){
     this.submitted = event;
     this.finalSubmitted = event;
@@ -96,7 +89,8 @@ this.imageIndex6 = ten[5]}
 
   }
 goBackUpdate(){
-  this.tenReceived = false
+  this.tenReceived = false;
+  this.filterService.gobackUpdate.next(this.iterations)
 }
   finalImage(finalImageIndex:any){
     this.finalClicked = true;
@@ -121,7 +115,7 @@ goBackUpdate(){
 public onLikeness(){
  let date = new Date()
   let rating2={'rating': this.rating, 'iterations':this.iterations, 'UTC time': date}
-  this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results2500.json', rating2)
+  this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results4000.json', rating2)
   .subscribe(res=> {})
   this.submitted2 =true;
   //this.onSubmit.emit(true)
