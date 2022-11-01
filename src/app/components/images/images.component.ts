@@ -109,7 +109,7 @@ export class ImagesComponent implements OnInit {
 public successful(){
  let date = new Date()
   let rating2={'rating': 5, 'iterations':this.iterations, 'UTC time': date}
-  this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results4000.json', rating2)
+  this.http.post('https://sketchy-b3e32-default-rtdb.europe-west1.firebasedatabase.app/results5000.json', rating2)
   .subscribe(res=> {})
   this.submitted =true;
   this.onSubmit.emit(true)
